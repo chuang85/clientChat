@@ -1,14 +1,30 @@
 package client;
 
-import java.io.*;
-import java.net.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 import static java.lang.System.out;
 
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 public final class  ChatUsers extends JFrame implements ActionListener {
-    String username;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4593394265614583520L;
+	String username;
     PrintWriter pw;
     BufferedReader br;
     JTextArea  chatmsg;
@@ -24,6 +40,7 @@ public final class  ChatUsers extends JFrame implements ActionListener {
         pw = new PrintWriter(chatusers.getOutputStream(),true);
         pw.println(uname);
         buildInterface();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         new MessagesThread().start(); 
     }
     
